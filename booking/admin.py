@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import user, room, booking
-admin.site.register(user)
-admin.site.register(room)
-admin.site.register(booking)
+from .models import User, Room, Booking
+admin.site.register(User)
+admin.site.register(Room)
+admin.site.register(Booking)
 
 # Register your models here.
