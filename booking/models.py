@@ -18,5 +18,6 @@ class Booking(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     check_in = models.DateField()
     check_out = models.DateField()
+    total_price = models.IntegerField(null = True, blank = True)
     def __str__(self):
         return f"Booking for {self.user.name} in Room {self.room.room_number}"

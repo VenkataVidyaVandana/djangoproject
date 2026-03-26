@@ -20,6 +20,15 @@ class BookingSerializer(serializers.ModelSerializer):
         if conflict.exists():
             raise serializers.error("room is already booked for the selected dates")
         return data
+    #pricing logic
+    def create(self, validated_data):
+        room = validated_data['room']
+        check_in = validated_data['check_in']
+        check_out = validated_data['check_out']
+        days = (check_out- check_in).days
+        total = days * room.price
+        validated_data['total_price'] = total
+        return super().create(validated_data)
     class Meta:
         model = Booking
         fields = '__all__'
